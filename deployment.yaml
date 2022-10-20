@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: reactadv-1
+  namespace: reactadv-1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reactadv-1
+  namespace: reactadv-1
+  labels:
+    app: reactadv-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reactadv-1
+  template:
+    metadata:
+      labels:
+        app: reactadv-1
+    spec:
+      containers:
+        - name: reactadv-1
+          image: 955116512041.dkr.ecr.us-west-2.amazonaws.com/ld-demo-reactadv-1-myappimage-vnyaxzkotgoa:latest 
+          imagePullPolicy: Always
+          ports:
+            - name: web
+              containerPort: 3000
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: reactadv-1
+  name: reactadv-lb
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: reactadv-1
+  type: LoadBalancer
