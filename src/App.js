@@ -22,7 +22,7 @@ function App() {
         <header className="App-header grid col-start-1 col-span-4 row-start-2">
         <div className="body bg-ldgray px-8 py-4 mb-5 w-full shadow-2xl">
           <p className="text-m xl:text-8xl font-bold">LaunchDarkly</p>
-          <p className="text-m xl:text-4xl">Welcomes you to <span className="text-ldyellow">React Advanced</span>!</p>        
+          <p className="text-m xl:text-4xl">Hello, <span className="text-ldyellow">World</span>!</p>        
         </div>
         <Intro release={release} />
       </header>
